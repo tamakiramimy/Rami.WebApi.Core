@@ -1,0 +1,955 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rami.WebApi.Core.Service</name>
+    </assembly>
+    <members>
+        <member name="T:Rami.WebApi.Core.Service.WxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoComResponse.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoComResponse.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxAutoKeywordHelper})">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoComResponse.SendWxText(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            发送微信应答
+            </summary>
+            <param name="gzhClient"></param>
+            <param name="gzhSever"></param>
+            <param name="timeStamp"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoComResponse.AutoMsgResponse(System.String)">
+            <summary>
+            自动应答响应
+            </summary>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoComResponse.ResponseOK">
+            <summary>
+            返回Success
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxAutoConvertHelper">
+            <summary>
+            微信消息转换帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoConvertHelper.WebRoot">
+            <summary>
+            网站根目录
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoConvertHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoConvertHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoConvertHelper.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.#ctor(Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxAutoKeywordHelper},Rami.WebApi.Core.Service.WxAutoComResponse)">
+            <summary>
+            构造方法 
+            </summary>
+            <param name="repo"></param>
+            <param name="logHelper"></param>
+            <param name="wxAutoComResponse"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.GetResponseWxNews(Rami.WebApi.Core.Domain.WxAutoKeywordShow)">
+            <summary>
+            把永久图文转成自动应答图文（公众号自动回复）
+            </summary>
+            <param name="autoKeyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.GetResponseBackNews(Rami.WebApi.Core.Domain.WxAutoKeywordShow,System.Collections.Generic.List{System.Int64})">
+            <summary>
+            GzhMarket后台文章 转化成 微信图文（公众号自动回复）
+            </summary>
+            <param name="autoKeyword"></param>
+            <param name="lstIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.SendResponseRedPack(System.String,System.String,Rami.WebApi.Core.Domain.WxAutoKeywordShow,System.DateTime,System.Int32)">
+            <summary>
+            自动推送红包（公众号自动回复）
+            </summary>
+            <param name="gzhClient"></param>
+            <param name="gzhSever"></param>
+            <param name="autoKeyword"></param>
+            <param name="dtNow"></param>
+            <param name="timeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.GetAutoKeywordBackNews(Rami.WebApi.Core.Domain.WxAutoKeywordShow)">
+            <summary>
+            后台图文转换成客服图文消息(关键字回复)
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.SendAutoKeywordRedPack(Rami.WebApi.Core.Domain.WxAutoKeywordShow,System.String)">
+            <summary>
+            发送红包消息(关键字回复)
+            </summary>
+            <param name="item"></param>
+            <param name="openId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.SaveAutoKeywordHis(System.Int64,System.String)">
+            <summary>
+            保存关键字回复记录(关键字回复)(红包使用)
+            </summary>
+            <param name="autoId"></param>
+            <param name="openId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.GetAutoPushBackNews(Rami.WebApi.Core.Domain.WxAutoPushShow)">
+            <summary>
+            后台图文转换成客服图文消息(定时推送)
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.SendAutoPushRedPack(Rami.WebApi.Core.Domain.WxAutoPushShow,System.String)">
+            <summary>
+            发送红包消息(定时推送)
+            </summary>
+            <param name="item"></param>
+            <param name="openId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoConvertHelper.SaveAutoPushHis(System.Int64,System.String)">
+            <summary>
+            保存定时推送发送记录（客服消息、预览）
+            </summary>
+            <param name="pushId"></param>
+            <param name="openId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxAutoKeywordHelper">
+            <summary>
+            关键字自动回复帮助类（客服消息）
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoKeywordHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoKeywordHelper.wxAutoConvertHelper">
+            <summary>
+            微信消息转换帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoKeywordHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxAutoKeywordHelper},Rami.WebApi.Core.Service.WxAutoConvertHelper)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="wxAutoConvertHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoKeywordHelper.AutoRespond(Rami.WebApi.Core.Domain.WxAutoKeywordShow,System.String)">
+            <summary>
+            自动应答(客服消息)
+            </summary>
+            <param name="item"></param>
+            <param name="openId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxAutoPushHelper">
+            <summary>
+            定时推送（客服消息）
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoPushHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoPushHelper.wxAutoConvertHelper">
+            <summary>
+            微信消息转换帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoPushHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxAutoPushHelper},Rami.WebApi.Core.Service.WxAutoConvertHelper)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="wxAutoConvertHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoPushHelper.AutoRespond(Rami.WebApi.Core.Domain.WxAutoPushShow,System.String)">
+            <summary>
+            定时推送(客服消息)
+            </summary>
+            <param name="item"></param>
+            <param name="openId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxAutoResponseHelper">
+            <summary>
+            微信自动回复帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoResponseHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoResponseHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoResponseHelper.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoResponseHelper.wxAutoConvertHelper">
+            <summary>
+            微信消息转换帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxAutoResponseHelper.wxAutoKeywordHelper">
+            <summary>
+            关键字自动回复帮助类（客服消息）
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoResponseHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxAutoResponseHelper},Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Service.WxAutoComResponse,Rami.WebApi.Core.Service.WxAutoConvertHelper,Rami.WebApi.Core.Service.WxAutoKeywordHelper)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="repo"></param>
+            <param name="wxAutoComResponse"></param>
+            <param name="wxAutoConvertHelper"></param>
+            <param name="wxAutoKeywordHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoResponseHelper.DealWithKeyWord(System.String,System.String,System.String)">
+            <summary>
+            处理关键字
+            </summary>
+            <param name="gzhClient"></param>
+            <param name="gzhServer"></param>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoResponseHelper.SendKfAutoKeyword(Rami.WebApi.Core.Domain.WxUserInfo,System.Collections.Generic.List{Rami.WebApi.Core.Domain.WxAutoKeywordShow})">
+            <summary>
+            超过1条的相同关键字的自动回复 改用客服消息发送
+            </summary>
+            <param name="wxUser"></param>
+            <param name="lstKeywords"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxAutoResponseHelper.SendMsgByPush(System.String,System.String,Rami.WebApi.Core.Domain.WxAutoKeywordShow,Rami.WebApi.Core.Domain.WxUserInfo)">
+            <summary>
+            根据不同类型推送消息
+            </summary>
+            <param name="gzhClient"></param>
+            <param name="gzhSever"></param>
+            <param name="autoKeyword"></param>
+            <param name="wxUser"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.CacheHelper">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.CacheHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.#ctor(Rami.WebApi.Core.Framework.IRepository)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="repo"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetUserInfoCache">
+            <summary>
+            用户缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetPermMenuCache">
+            <summary>
+            菜单权限缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetPermRoleCache">
+            <summary>
+            角色缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetPermRoleMenuCache">
+            <summary>
+            角色菜单缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetPermUserRoleCache">
+            <summary>
+            用户角色缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetDbCommConfig">
+            <summary>
+            数据库通用配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.DicDbConmmConfig">
+            <summary>
+            数据库通用配置字典
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetDbConfValByKey(System.String)">
+            <summary>
+            根据key获取配置值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetCountryCache">
+            <summary>
+            获取国家、省、市缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.CacheHelper.GetCountryByName(System.Int32,System.String)">
+            <summary>
+            根据类型获取 国家、省、市
+            </summary>
+            <param name="type"></param>
+            <param name="pName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.ConfigHelper">
+            <summary>
+            通用配置帮助类
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Service.ConfigHelper.IsDev">
+            <summary>
+            是否测试
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.CookieAuthName">
+            <summary>
+            Cookie认证Cookie名称
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.JwtAuthName">
+            <summary>
+            Jwt授权Cookie名称
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.IsOidcAuth">
+            <summary>
+            是否Oidc认证；是：Oidc认证，否：Jwt(api)+Cookies（mvc）
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.IsApiReqResMidLog">
+            <summary>
+            是否启用API请求响应日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.IsMemoryAopEnabled">
+            <summary>
+            是否启用AOP Memory缓存
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.IsRedisAopEnabled">
+            <summary>
+            是否启用AOP Redis缓存
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.IsLogAopEnabled">
+            <summary>
+            是否启用AOP 方法日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.IsDbSeedEnabled">
+            <summary>
+            是否还原数据库
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.JwtIssuer">
+            <summary>
+            Jwt颁发者
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.JwtAudience">
+            <summary>
+            Jwt授权者
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.JwtSecret">
+            <summary>
+            Jwt秘钥
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.JwtOverSec">
+            <summary>
+            Jwt期限(秒)
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.AllowOrigins">
+            <summary>
+            跨域请求
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.ConfigHelper.StartUrl">
+            <summary>
+            启动首页
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.ICacheHelper">
+            <summary>
+            缓存接口
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetUserInfoCache">
+            <summary>
+            用户缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetPermMenuCache">
+            <summary>
+            菜单权限缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetPermRoleCache">
+            <summary>
+            角色缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetPermRoleMenuCache">
+            <summary>
+            角色菜单缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetPermUserRoleCache">
+            <summary>
+            用户角色缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetDbCommConfig">
+            <summary>
+            数据库通用配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.DicDbConmmConfig">
+            <summary>
+            数据库通用配置字典
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetDbConfValByKey(System.String)">
+            <summary>
+            根据key获取配置值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetCountryCache">
+            <summary>
+            获取国家、省、市缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.ICacheHelper.GetCountryByName(System.Int32,System.String)">
+            <summary>
+            根据类型获取 国家、省、市
+            </summary>
+            <param name="type"></param>
+            <param name="pName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.Helpers.UploadFileHelper">
+            <summary>
+            文件上传帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.Helpers.UploadFileHelper.Root">
+            <summary>
+            默认根目录
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.Helpers.UploadFileHelper.GetUploadFileInfo(System.String,System.String)">
+            <summary>
+            根据相对路径获取上传文件信息
+            </summary>
+            <param name="virPath"></param>
+            <param name="root"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.Helpers.UploadFileHelper.GetUploadFileInfos(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            根据相对路径获取批量上传文件信息
+            </summary>
+            <param name="lstVirPath"></param>
+            <param name="root"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.AutoPushJob">
+            <summary>
+            自动推送服务
+            （在 Program写死调用，不推荐，建议用定时服务后台管理平台，通过Webapi方式调用）
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushJob.serviceProvider">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushJob.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushJob.autoPushSvc">
+            <summary>
+            自动推送服务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushJob.Execute(Quartz.IJobExecutionContext)">
+            <summary>
+            执行定时任务
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.AutoPushSvc">
+            <summary>
+            自动推送定时服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushSvc.TimingSpanMin">
+            <summary>
+            定时服务间隔（每隔多少分钟执行一次）
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushSvc.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushSvc.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.AutoPushSvc.wxAutoConvertHelper">
+            <summary>
+            微信消息转换帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushSvc.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.AutoPushSvc},Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Service.WxAutoConvertHelper)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="repo"></param>
+            <param name="wxAutoConvertHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushSvc.TimingPush">
+            <summary>
+            定时推送
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushSvc.PushMsgToUser(Rami.WebApi.Core.Domain.WxAutoPushShow,System.Collections.Generic.List{Rami.WebApi.Core.Domain.WxUserInfo})">
+            <summary>
+            推送消息
+            </summary>
+            <param name="push"></param>
+            <param name="lstWxUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushSvc.Get2DayActWxUserSql(Rami.WebApi.Core.Domain.WxAutoPush)">
+            <summary>
+            获取2天内有交互的微信用户
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushSvc.GetAutoPushMsg(Rami.WebApi.Core.Domain.WxAutoPushShow,Rami.Wechat.Core.Public.PubKfBaseMsg,Rami.WebApi.Core.Domain.Enum_ApMsgType)">
+            <summary>
+            构造自动推送消息
+            </summary>
+            <param name="push"></param>
+            <param name="baseMsg"></param>
+            <param name="apMsgType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.AutoPushSvc.SendAutoPushMsg(Rami.WebApi.Core.Domain.WxAutoPushShow,Rami.Wechat.Core.Public.PubKfBaseMsg,Rami.WebApi.Core.Domain.Enum_ApMsgType,Rami.WebApi.Core.Domain.WxUserInfo)">
+            <summary>
+            定时推送消息
+            </summary>
+            <param name="push"></param>
+            <param name="baseMsg"></param>
+            <param name="apMsgType"></param>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxDbLogHelper">
+            <summary>
+            微信数据库日志帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxDbLogHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxDbLogHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxDbLogHelper.#ctor(Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxDbLogHelper})">
+            <summary>
+            构造方法
+            </summary>
+            <param name="repo"></param>
+            <param name="logHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxDbLogHelper.SaveWxOptLog(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            保存微信日志到数据库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxDbLogHelper.SaveWxUser(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            保存微信用户信息
+            </summary>
+            <param name="recMsg"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxDbLogHelper.SaveSubLog(Rami.Wechat.Core.Public.PubReceiveMsgCData,System.Int32)">
+            <summary>
+            微信关注/取关记录
+            </summary>
+            <param name="recMsg"></param>
+            <param name="type">0:关注;1:取关</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxDbLogHelper.SaveQrLog(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            微信扫码记录
+            </summary>
+            <param name="recMsg"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxEventClickHelper">
+            <summary>
+            微信推送菜单点击事件处理
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventClickHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventClickHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventClickHelper.wxAutoResponseHelper">
+            <summary>
+            微信自动回复帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventClickHelper.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventClickHelper.wxKfTransferHelper">
+            <summary>
+            微信客服转接消息帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventClickHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxEventClickHelper},Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Service.WxAutoResponseHelper,Rami.WebApi.Core.Service.WxAutoComResponse,Rami.WebApi.Core.Service.WxKfTransferHelper)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="repo"></param>
+            <param name="wxAutoResponseHelper"></param>
+            <param name="wxAutoComResponse"></param>
+            <param name="wxKfTransferHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventClickHelper.Deal(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            微信推送菜单点击事件处理
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxEventHandler">
+            <summary>
+            微信推送Event处理
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventHandler.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventHandler.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventHandler.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventHandler.wxEventScanHelper">
+            <summary>
+            微信推送扫码事件处理
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventHandler.wxEventClickHelper">
+            <summary>
+            微信推送菜单点击事件处理
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventHandler.wxDbLogHelper">
+            <summary>
+            微信数据库日志帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventHandler.#ctor(Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxEventHandler},Rami.WebApi.Core.Service.WxAutoComResponse,Rami.WebApi.Core.Service.WxEventScanHelper,Rami.WebApi.Core.Service.WxEventClickHelper,Rami.WebApi.Core.Service.WxDbLogHelper)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="repo"></param>
+            <param name="logHelper"></param>
+            <param name="wxAutoComResponse"></param>
+            <param name="wxEventScanHelper"></param>
+            <param name="wxEventClickHelper"></param>
+            <param name="wxDbLogHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventHandler.DealQyEvent(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            处理企业号推送事件
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventHandler.DealWxSubscribe(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+             关注
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventHandler.DealWxUnsubscribe(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            取消关注
+            </summary>
+            <param name="recMsg"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventHandler.DealWxscan(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            扫码操作
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventHandler.DealWxClick(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            菜单点击事件
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxEventScanHelper">
+            <summary>
+            微信推送扫码事件处理
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventScanHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventScanHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxEventScanHelper.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventScanHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxEventScanHelper},Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Service.WxAutoComResponse)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="repo"></param>
+            <param name="wxAutoComResponse"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxEventScanHelper.Deal(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            微信推送扫码事件处理
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxKfTransferHelper">
+            <summary>
+            微信客服转接消息帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxKfTransferHelper.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxKfTransferHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxKfTransferHelper.cacheHelper">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxKfTransferHelper.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxKfTransferHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxKfTransferHelper},Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Service.ICacheHelper,Rami.WebApi.Core.Service.WxAutoComResponse)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="repo"></param>
+            <param name="cacheHelper"></param>
+            <param name="wxAutoComResponse"></param>
+        </member>
+        <member name="P:Rami.WebApi.Core.Service.WxKfTransferHelper.LstKfKeywords">
+            <summary>
+            进入客服的关键字
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxKfTransferHelper.IsWorkTime">
+            <summary>
+            是否工作时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxKfTransferHelper.IsIn5Min(System.String)">
+            <summary>
+            5分钟内有沟通记录才转发客服
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxKfTransferHelper.IsKfMsg(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            判断是否客服消息
+            如果不是事件消息 或者 事件key是联系客服 或者 回复的文本是客服关键字 都属于联系客服
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxKfTransferHelper.ChatWithKf(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            联系客服
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxKfTransferHelper.ContactKf(Rami.Wechat.Core.Public.PubReceiveMsg)">
+            <summary>
+            联系客服(菜单)
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Service.WxTextHandler">
+            <summary>
+            公众号推送文本处理
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxTextHandler.repo">
+            <summary>
+            服务
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxTextHandler.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxTextHandler.wxAutoResponseHelper">
+            <summary>
+            微信自动回复帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Service.WxTextHandler.wxAutoComResponse">
+            <summary>
+            微信自动通用应答
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxTextHandler.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Service.WxTextHandler},Rami.WebApi.Core.Framework.IRepository,Rami.WebApi.Core.Service.WxAutoResponseHelper,Rami.WebApi.Core.Service.WxAutoComResponse)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="logHelper"></param>
+            <param name="repo"></param>
+            <param name="wxAutoResponseHelper"></param>
+            <param name="wxAutoComResponse"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Service.WxTextHandler.DealQyText(Rami.Wechat.Core.Public.PubReceiveMsgCData)">
+            <summary>
+            公众号推送Text处理
+            </summary>
+            <param name="recMsg"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

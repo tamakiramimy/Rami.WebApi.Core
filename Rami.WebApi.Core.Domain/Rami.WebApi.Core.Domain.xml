@@ -1,0 +1,1519 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rami.WebApi.Core.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:Rami.WebApi.Core.Domain.BaseDb">
+            <summary>
+            BaseDb
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.BaseDb.IsDel">
+            <summary>
+            是否禁用
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.BaseDb.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.BaseDb.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.BaseDb.Creater">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.BaseDb.Updater">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.BaseDbShow">
+            <summary>
+            数据库基类
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.BaseDbShow.IsDelShow">
+            <summary>
+            是否禁用
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.DbConfig">
+            <summary>
+            数据库配置表
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.DbConfig.ConfigName">
+            <summary>
+            配置名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.DbConfig.ConfigValue">
+            <summary>
+            配置值
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.DbConfig.ConfigRemark">
+            <summary>
+            配置备注
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.DbConfig.ConfigTag">
+            <summary>
+            配置提示
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.UserInfo">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.UserPwd">
+            <summary>
+            用户密码
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.Name">
+            <summary>
+            显示名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.Phone">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UserInfo.UserIcon">
+            <summary>
+            用户头像
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.UserInfoShow">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermMenu">
+            <summary>
+            菜单管理
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.PId">
+            <summary>
+            父ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.MenuName">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.Router">
+            <summary>
+            路由
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.OrdInd">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.TreeCode">
+            <summary>
+            树代码
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.IconClass">
+            <summary>
+            菜单样式
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.NeedAuth">
+            <summary>
+            是否需要授权(0:否;1:是)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.IsHide">
+            <summary>
+            是否隐藏菜单
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenu.IsUrl">
+            <summary>
+            是否Url链接
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermMenuDto">
+            <summary>
+            菜单Dto
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenuDto.NeedAuthShow">
+            <summary>
+            是否需要授权(0:否;1:是)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenuDto.PIdArr">
+            <summary>
+            父节点递归
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenuDto.FullPath">
+            <summary>
+            全路径
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermMenuDto.IsHideShow">
+            <summary>
+            是否隐藏
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.NavigationBar">
+            <summary>
+            菜单路由vue router
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.pid">
+            <summary>
+            父Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.order">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.path">
+            <summary>
+            路由
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.meta">
+            <summary>
+            路由Meta
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.children">
+            <summary>
+            子路由
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.iconCls">
+            <summary>
+            菜单样式
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.IsHide">
+            <summary>
+            是否隐藏
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.IsButton">
+            <summary>
+            是否按钮控制权限(暂时没用)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.Func">
+            <summary>
+            按钮对应API权限控制(暂时没用)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBar.IsUrl">
+            <summary>
+            是否Url链接
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.NavigationBarMeta">
+            <summary>
+            菜单数据
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBarMeta.title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBarMeta.requireAuth">
+            <summary>
+            是否需要授权
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.NavigationBarMeta.NoTabPage">
+            <summary>
+            非Tab页签
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermissionTree">
+            <summary>
+            菜单树
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.value">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.Pid">
+            <summary>
+            父Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.label">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.order">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.isbtn">
+            <summary>
+            是否按钮
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.disabled">
+            <summary>
+            是否禁止选择
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.children">
+            <summary>
+            值菜单
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermissionTree.btns">
+            <summary>
+            按钮
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermRole">
+            <summary>
+            用户角色
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermRole.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermRole.RoleName">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermRole.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermRole.OrdInd">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermRoleDto">
+            <summary>
+            用户角色
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermRoleMenu">
+            <summary>
+            角色-菜单关系
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermRoleMenu.RId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermRoleMenu.MId">
+            <summary>
+            菜单Id
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermRoleMenuDto">
+            <summary>
+            角色-菜单关系
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermRoleMenuVto">
+            <summary>
+            角色-菜单关系 展示
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermUserRole">
+            <summary>
+            用户-角色关系表
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRole.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRole.RId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermUserRoleDto">
+            <summary>
+            用户-角色关系表
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.PermUserRoleVto">
+            <summary>
+            用户-角色关系 展示
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRoleVto.UserName">
+            <summary>
+            oa账号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRoleVto.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRoleVto.RIds">
+            <summary>
+            角色Ids
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRoleVto.Descriptions">
+            <summary>
+            角色描述
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.PermUserRoleVto.LstRIds">
+            <summary>
+            角色Id列表
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxAutoKeyword">
+            <summary>
+            公众号关键字回复
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.AutoName">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.KeyWords">
+            <summary>
+            关键字(格式a、b、c)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.ContentType">
+            <summary>
+            推送的消息类型（CommDomain.BusinessObject.WxNotify.ApMsgType）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.TextContent">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.MediaId">
+            <summary>
+            微信媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.MediaName">
+            <summary>
+            微信媒体名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.VideoThumbMediaId">
+            <summary>
+            微信视频缩略图媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.VideoThumbMediaName">
+            <summary>
+            微信视频缩略图名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.VideoTitle">
+            <summary>
+            微信视频标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.VideoDescription">
+            <summary>
+            微信视频描述
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.ArtIds">
+            <summary>
+            选中的后台文章IDS
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.SendType">
+            <summary>
+            多图文发送方式（0：随机一条，1：多图文)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.RedAmount">
+            <summary>
+            红包金额
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.RedCount">
+            <summary>
+            红包个数
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.RedWish">
+            <summary>
+            红包祝福语
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.RedAct">
+            <summary>
+            红包活动名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeyword.RedRemark">
+            <summary>
+            红包备注
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxAutoKeywordShow">
+            <summary>
+            公众号关键字回复
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordShow.LstSelArtIds">
+            <summary>
+            选中的后台图文列表
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordShow.PrevNick">
+            <summary>
+            预览的昵称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordShow.OpenId">
+            <summary>
+            预览OpenId
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxAutoKeywordDetail">
+            <summary>
+            自动回复记录
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordDetail.Id">
+            <summary>
+            自增ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordDetail.AutoId">
+            <summary>
+            自动应答ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordDetail.Opend">
+            <summary>
+            Opend
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoKeywordDetail.SendTime">
+            <summary>
+            发送时间
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxAutoPush">
+            <summary>
+            自动推送配置
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.Id">
+            <summary>
+            自增ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.PushName">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.ContentType">
+            <summary>
+            推送的消息类型（Rami.WebApi.Core.Domain.ApMsgType）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.PushTime">
+            <summary>
+            设定推送时间
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.TextContent">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.MediaId">
+            <summary>
+            微信媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.MediaName">
+            <summary>
+            微信媒体名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.VideoThumbMediaId">
+            <summary>
+            微信视频缩略图媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.VideoThumbMediaName">
+            <summary>
+            微信视频缩略图名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.VideoTitle">
+            <summary>
+            微信视频标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.VideoDescription">
+            <summary>
+            微信视频描述
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.ArtIds">
+            <summary>
+            选中的后台文章IDS
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.IsMul">
+            <summary>
+            是否多图文
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.RedAmount">
+            <summary>
+            红包金额
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.RedCount">
+            <summary>
+            红包个数
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.RedWish">
+            <summary>
+            红包祝福语
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.RedAct">
+            <summary>
+            红包活动名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.RedRemark">
+            <summary>
+            红包备注
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.PushingSex">
+            <summary>
+            按性别发送
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.Country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.Province">
+            <summary>
+            省份
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.City">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPush.OldKeyWords">
+            <summary>
+            按曾经发送过关键字的用户发送
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxAutoPushShow">
+            <summary>
+            自动推送配置
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushShow.PushCount">
+            <summary>
+            推送人数
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushShow.IsCanEdit">
+            <summary>
+            是否能够修改
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushShow.LstSelSex">
+            <summary>
+            选中的性别
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushShow.LstSelArtIds">
+            <summary>
+            选中的后台图文列表
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushShow.PrevNick">
+            <summary>
+            预览的昵称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushShow.OpenID">
+            <summary>
+            OpenID
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxAutoPushDetail">
+            <summary>
+            推送记录/红包发放记录
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushDetail.Id">
+            <summary>
+            自增ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushDetail.PushId">
+            <summary>
+            推送配置ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushDetail.Opend">
+            <summary>
+            Opend
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxAutoPushDetail.PushTime">
+            <summary>
+            推送时间
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxBackNews">
+            <summary>
+            后台图文（自动推送用）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.Id">
+            <summary>
+            自增ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.Name">
+            <summary>
+            图文名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.SecondName">
+            <summary>
+            图文描述
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.HtmlContent">
+            <summary>
+            文章内容（html）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.VistorNumber">
+            <summary>
+            浏览次数
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.ArticleUrl">
+            <summary>
+            文章链接
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNews.ImgUrlVir">
+            <summary>
+            图片地址(Upload/Files)
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxBackNewsShow">
+            <summary>
+            GzhMarket后台图文（自动推送用）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNewsShow.ImgUrlShow">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNewsShow.ArticleUrlShow">
+            <summary>
+            图文链接
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxBackNewsShow.UpFile">
+            <summary>
+            上传的文件列表
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxKfInfo">
+            <summary>
+            微信客服账号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.KfAccount">
+            <summary>
+            完整客服帐号，格式为：帐号前缀@公众号微信号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.KfNick">
+            <summary>
+            客服昵称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.KfId">
+            <summary>
+             客服编号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.KfHeadimgurl">
+            <summary>
+            客服头像
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.KfHeadUpVir">
+            <summary>
+            客服头像上传的虚拟路径
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.KfWx">
+            <summary>
+            如果客服帐号已绑定了客服人员微信号， 则此处显示微信号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.InviteWx">
+            <summary>
+            如果客服帐号尚未绑定微信号，但是已经发起了一个绑定邀请， 则此处显示绑定邀请的微信号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.InviteExpireTime">
+            <summary>
+            如果客服帐号尚未绑定微信号，但是已经发起过一个绑定邀请， 邀请的过期时间，为unix 时间戳
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfo.InviteStatus">
+            <summary>
+            邀请的状态，有等待确认“waiting”，被拒绝“rejected”， 过期“expired”
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxKfInfoShow">
+            <summary>
+            微信客服账号
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxKfInfoShow.KfHeadUpShow">
+            <summary>
+            客服头像
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxMedia">
+            <summary>
+            微信永久素材管理
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMedia.MediaId">
+            <summary>
+            媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMedia.Type">
+            <summary>
+            素材类别
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMedia.Title">
+            <summary>
+            素材的标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMedia.Introduction">
+            <summary>
+            素材的描述	
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMedia.WxUrl">
+            <summary>
+            素材链接(微信服务器)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMedia.LocalUrl">
+            <summary>
+            本地存储路径
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxMediaShow">
+            <summary>
+            微信永久素材管理
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMediaShow.TypeShow">
+            <summary>
+            媒体类别
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMediaShow.LocalUrlShow">
+            <summary>
+            本地存储路径显示
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxMenus">
+            <summary>
+            微信公众号菜单
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.ParentId">
+            <summary>
+            父菜单
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Level">
+            <summary>
+            级别(一级菜单、二级菜单)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Order">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Name">
+            <summary>
+            菜单标题，不超过16个字节，子菜单不超过60个字节
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Type">
+            <summary>
+            菜单的响应动作类型，view表示网页类型，click表示点击类型，miniprogram表示小程序类型
+            (枚举：WeChat.Public.MenuType)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Key">
+            <summary>
+            菜单KEY值，用于消息接口推送，不超过128字节
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Url">
+            <summary>
+            网页 链接，用户点击菜单可打开链接，不超过1024字节。 type为miniprogram时，不支持小程序的老版本客户端将打开本url
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.MediaId">
+            <summary>
+            调用新增永久素材接口返回的合法media_id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Appid">
+            <summary>
+            小程序的appid（仅认证公众号可配置）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenus.Pagepath">
+            <summary>
+            小程序的页面路径
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxMenusShow">
+            <summary>
+            微信公众号菜单
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxMenusShow.SubButton">
+            <summary>
+            二级菜单数组，个数应为1~5个
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxNews">
+            <summary>
+            微信永久素材管理
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNews.MediaId">
+            <summary>
+            媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNews.FirstNewsTitle">
+            <summary>
+            首图文标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNews.IsMultiple">
+            <summary>
+            是否多图文
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxNewsShow">
+            <summary>
+            微信永久素材管理
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsShow.IsMultipleShow">
+            <summary>
+            是否多图文
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxNewsDetail">
+            <summary>
+            微信图文详情
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.Id">
+            <summary>
+            自增ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.MediaId">
+            <summary>
+            媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.ThumbMediaId">
+            <summary>
+            缩略图ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.ThumbUrl">
+            <summary>
+            微信端图片（同步图文消息时返回）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.Digest">
+            <summary>
+            图文摘要
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.ShowCoverPic">
+            <summary>
+            是否显示封面图
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.Content">
+            <summary>
+            图文Html内容
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.ContentSourceUrl">
+            <summary>
+            图文链接
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetail.WxUrl">
+            <summary>
+            微信图文链接（同步图文消息时返回）
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxNewsDetailShow">
+            <summary>
+            微信图文详情
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetailShow.ContentSourceUrlShow">
+            <summary>
+            图文链接
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxNewsDetailShow.ThumbUrlShow">
+            <summary>
+            缩略图展示
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxQrCodeLog">
+            <summary>
+            公众号微信扫码记录
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxQrCodeLog.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxQrCodeLog.OpenId">
+            <summary>
+            OpenId
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxQrCodeLog.ScanDate">
+            <summary>
+            扫码时间
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxQrCodeLog.QrSceneStr">
+            <summary>
+            二维码场景key
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxQrCodeLog.QrTicketId">
+            <summary>
+            二维码Ticket
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxQrCodeLog.QrStr">
+            <summary>
+            二维码关联字段（推广员Id等）
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxSubScribeLog">
+            <summary>
+            关注取关记录
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxSubScribeLog.Id">
+            <summary>
+            自增Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxSubScribeLog.OpenId">
+            <summary>
+            OpenId
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxSubScribeLog.SubScribeType">
+            <summary>
+            0:关注;1:取消关注
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxSubScribeLog.OptDate">
+            <summary>
+            关注/取关时间
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxSubScribeLog.QrSceneStr">
+            <summary>
+            二维码场景key
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxSubScribeLog.QrTicketId">
+            <summary>
+            二维码Ticket
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxUserInfo">
+            <summary>
+            通用微信用户
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.OpenId">
+            <summary>
+            微信Id
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.HeadImgUrl">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.City">
+            <summary>
+            市
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Privilege">
+            <summary>
+            权限
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Unionid">
+            <summary>
+            关联公众号ID（多个公众号OpenID互转）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Language">
+            <summary>
+            语言
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Remark">
+            <summary>
+            公众号运营者对粉丝的备注，公众号运营者可在微信公众平台用户管理界面对粉丝添加备注
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.Groupid">
+            <summary>
+            用户所在的分组ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.IsSubscribe">
+            <summary>
+            是否关注(0:未关注;1:关注)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfo.SubscribeTime">
+            <summary>
+            关注时间
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxUserInfoExt">
+            <summary>
+            微信用户额外信息
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfoExt.OpenId">
+            <summary>
+            OpenId
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfoExt.Phone">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfoExt.LeadId">
+            <summary>
+            Crm LeadId
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserInfoExt.PersId">
+            <summary>
+            Crm PersId
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.WxUserOptLog">
+            <summary>
+            微信公众号用户交互记录
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Id">
+            <summary>
+            自增ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.MsgId">
+            <summary>
+            消息ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.ToUserName">
+            <summary>
+            接收人
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.FromUserName">
+            <summary>
+            发送人
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.MsgType">
+            <summary>
+            消息类型(枚举WeChat.Public.MsgType)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Content">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.PicUrl">
+            <summary>
+            图片链接
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.MediaId">
+            <summary>
+            媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Format">
+            <summary>
+            媒体格式
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.ThumbMediaId">
+            <summary>
+            缩略图媒体ID
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.LocationX_Latitude">
+            <summary>
+            坐标维度
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.LocationY_Longitude">
+            <summary>
+            坐标经度
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Scale">
+            <summary>
+            地图缩放级别
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.LabelPrecision">
+            <summary>
+            坐标地点名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Title">
+            <summary>
+            文章标题
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Description">
+            <summary>
+            文章描述
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Url">
+            <summary>
+            文章链接
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Event">
+            <summary>
+            事件类别(枚举WeChat.Public.EventType)
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.EventKey">
+            <summary>
+            事件Key
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.WxUserOptLog.Ticket">
+            <summary>
+            卡券Ticket?
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.UploadRes">
+            <summary>
+            文件上传结果
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadRes.OrgFileName">
+            <summary>
+            上传时的文件名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadRes.VirPath">
+            <summary>
+            相对路径
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadRes.AbsPath">
+            <summary>
+            绝对路径
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadRes.PhyPath">
+            <summary>
+            物理路径
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.UploadFileInfo">
+            <summary>
+            上传结果
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadFileInfo.status">
+            <summary>
+            上传状态
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadFileInfo.name">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.UploadFileInfo.response">
+            <summary>
+            上传文件后台响应结果
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.UploadFileResp">
+            <summary>
+            上传文件后台响应结果
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.CountryInfo">
+            <summary>
+            国家信息
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.CountryInfo.Country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.CountryInfo.Province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.CountryInfo.City">
+            <summary>
+            市
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.EnumSysRoles">
+            <summary>
+            系统角色
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.EnumSysRoles.SuperAdmin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.EnumSysRoles.WxAdmin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.EnumSysRoles.WxKF">
+            <summary>
+            微信客服
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.Enum_ApMsgType">
+            <summary>
+            后台自动推送配置类别
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.Voice">
+            <summary>
+            录音
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.News">
+            <summary>
+            公众号图文
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.Video">
+            <summary>
+            视频
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.BackNews">
+            <summary>
+            后台图文
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Domain.Enum_ApMsgType.RedBag">
+            <summary>
+            红包
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Domain.LoginModel">
+            <summary>
+            登陆认证
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.LoginModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Domain.LoginModel.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+    </members>
+</doc>

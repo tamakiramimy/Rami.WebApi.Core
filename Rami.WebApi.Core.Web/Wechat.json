@@ -1,0 +1,106 @@
+﻿{
+  // 公众号配置
+  "Public": {
+    // 公众号Id
+    "AppId": "",
+    // 公众号私钥
+    "AppSecret": "",
+    // 公众号服务器验证签名Token
+    "AppToken": "",
+    // 公众号AES加密KEY
+    "EncodingAesKey": "",
+    // 公众号附属服务器验证Token
+    "TokenCode": "",
+    // 公众号AccessToken请求地址 服务器正式环境
+    "TokenUrl": "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}",
+    // 公众号Ticket请求地址 服务器正式环境
+    "TicketUrl": "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={0}&type=jsapi"
+  },
+  // 企业号
+  "Enterprise": {
+    // 企业号Id
+    "AppId": "",
+    // 企业号秘钥
+    "AppSecret": "",
+    // 企业号服务器验证Token
+    "AppToken": "",
+    // 企业号AES加密KEY
+    "EncodingAesKey": "",
+    // 企业号应用Id
+    "AgentId": 0,
+    // 外部联系人
+    "OutSecret": "",
+
+    // AccessToken请求地址 本地测试环境
+    "TokenUrl": "",
+    // Ticket请求地址 本地测试环境
+    "TicketUrl": "",
+    // OutAccess请求地址 本地测试环境
+    "OutAccessUrl": ""
+  },
+  // 小程序
+  "MiniProgram": {
+    // 小程序Id
+    "AppId": "",
+    // 小程序秘钥
+    "AppSecret": "",
+    // 小程序服务认证Token
+    "AppToken": "",
+    // 小程序AES加密KEY
+    "EncodingAesKey": "",
+    // 小程序附属服务器验证Token
+    "TokenCode": "",
+    // 小程序Token请求地址
+    "TokenUrl": "",
+    // 小程序Ticket请求地址
+    "TicketUrl": ""
+  },
+  // 商户号
+  "Merchants": {
+    // 公众号支付
+    "Public": {
+      // 商户号Id
+      "MchId": 0,
+      // 支付Key
+      "PayKey": "",
+      // 支付Secret
+      "PaySecret": "",
+      // 证书地址
+      "CertPath": "",
+      // 证书密码
+      "CertPass": "",
+      // 支付结果通知地址
+      "NotifyUrl": ""
+    },
+    // 企业号支付
+    "Enterprise": {
+      // 商户号Id
+      "MchId": 0,
+      // 支付Key
+      "PayKey": "",
+      // 支付Secret
+      "PaySecret": "",
+      // 证书地址
+      "CertPath": "",
+      // 证书密码
+      "CertPass": "",
+      // 支付结果通知地址
+      "NotifyUrl": ""
+    },
+    // 小程序支付
+    "MiniProgram": {
+      // 商户号Id
+      "MchId": 0,
+      // 支付Key
+      "PayKey": "",
+      // 支付Secret
+      "PaySecret": "",
+      // 证书地址
+      "CertPath": "",
+      // 证书密码
+      "CertPass": "",
+      // 支付结果通知地址
+      "NotifyUrl": ""
+    }
+  }
+}

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rami.WebApi.Core.Web", "Rami.WebApi.Core.Web\Rami.WebApi.Core.Web.csproj", "{A8F12DFE-F4D5-441F-859F-CFF7DCD5131A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rami.WebApi.Core.Framework", "Rami.WebApi.Core.Framework\Rami.WebApi.Core.Framework.csproj", "{C85E1211-F6E6-4F08-8D43-472AA4FF24F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rami.WebApi.Core.Domain", "Rami.WebApi.Core.Domain\Rami.WebApi.Core.Domain.csproj", "{383A4B7E-9522-438C-AFB4-BAE3A612094C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rami.WebApi.Core.Service", "Rami.WebApi.Core.Service\Rami.WebApi.Core.Service.csproj", "{D7A238E0-88B1-4AD4-ADEB-73E2232E843C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8F12DFE-F4D5-441F-859F-CFF7DCD5131A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F12DFE-F4D5-441F-859F-CFF7DCD5131A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F12DFE-F4D5-441F-859F-CFF7DCD5131A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F12DFE-F4D5-441F-859F-CFF7DCD5131A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85E1211-F6E6-4F08-8D43-472AA4FF24F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85E1211-F6E6-4F08-8D43-472AA4FF24F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85E1211-F6E6-4F08-8D43-472AA4FF24F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85E1211-F6E6-4F08-8D43-472AA4FF24F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383A4B7E-9522-438C-AFB4-BAE3A612094C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383A4B7E-9522-438C-AFB4-BAE3A612094C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383A4B7E-9522-438C-AFB4-BAE3A612094C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383A4B7E-9522-438C-AFB4-BAE3A612094C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A238E0-88B1-4AD4-ADEB-73E2232E843C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A238E0-88B1-4AD4-ADEB-73E2232E843C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A238E0-88B1-4AD4-ADEB-73E2232E843C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A238E0-88B1-4AD4-ADEB-73E2232E843C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C42051FB-8298-4DAB-9EF1-632152E3F1D8}
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

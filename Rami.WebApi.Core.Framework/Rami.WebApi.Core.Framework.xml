@@ -1,0 +1,3491 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rami.WebApi.Core.Framework</name>
+    </assembly>
+    <members>
+        <member name="T:Rami.WebApi.Core.Framework.CachingAttribute">
+            <summary>
+            这个Attribute就是使用时候的验证，把它添加到要缓存数据的方法中，即可完成缓存的操作。
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.CachingAttribute.AbsoluteExpiration">
+            <summary>
+            缓存绝对过期时间（分钟）
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ICaching">
+            <summary>
+            简单的缓存接口，只有查询和添加，以后会进行扩展
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ICaching.Get(System.String)">
+            <summary>
+            获取缓存值
+            </summary>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ICaching.Set(System.String,System.Object,System.Int32)">
+            <summary>
+            设置缓存值
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="cacheValue"></param>
+            <param name="cacheSec"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.MemoryCaching">
+            <summary>
+            实例化缓存接口ICaching
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.MemoryCaching._cache">
+            <summary>
+            引用Microsoft.Extensions.Caching.Memory;这个和.net 还是不一样，没有了Httpruntime了
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.MemoryCaching.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            还是通过构造函数的方法，获取
+            </summary>
+            <param name="cache"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.MemoryCaching.Get(System.String)">
+            <summary>
+            获取缓存值
+            </summary>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.MemoryCaching.Set(System.String,System.Object,System.Int32)">
+            <summary>
+            设置缓存值
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="cacheValue"></param>
+            <param name="cacheSec"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.IRedisCacheManager">
+            <summary>
+            Redis缓存接口
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRedisCacheManager.GetValue(System.String)">
+            <summary>
+            获取 Reids 缓存值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRedisCacheManager.Get``1(System.String)">
+            <summary>
+            获取值，并序列化
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRedisCacheManager.Set(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            保存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="cacheTime"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRedisCacheManager.IsExist(System.String)">
+            <summary>
+            判断是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRedisCacheManager.Remove(System.String)">
+            <summary>
+            移除某一个缓存值
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRedisCacheManager.Clear">
+            <summary>
+            全部清除
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.RedisCacheManager">
+            <summary>
+            Redis缓存
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RedisCacheManager.redisConnenctionString">
+            <summary>
+            连接串
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RedisCacheManager.redisConnectionLock">
+            <summary>
+            锁
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RedisCacheManager.redisConnection">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.GetRedisConnection">
+            <summary>
+            核心代码，获取连接实例
+            通过双if 夹lock的方式，实现单例模式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.Clear">
+            <summary>
+            清除
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.IsExist(System.String)">
+            <summary>
+            判断是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.GetValue(System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.Get``1(System.String)">
+            <summary>
+            获取
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.Remove(System.String)">
+            <summary>
+            移除
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.Set(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            设置
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="cacheTime"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RedisCacheManager.SetValue(System.String,System.Byte[])">
+            <summary>
+            增加/修改
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.AspNetUser">
+            <summary>
+            全局用户信息
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.AspNetUser._accessor">
+            <summary>
+            IHttpContextAccessor
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.AspNetUser.IsOidcAuth">
+            <summary>
+            是否Oidc授权模式
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.AspNetUser.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="accessor"></param>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.AspNetUser.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.AspNetUser.LstRoles">
+            <summary>
+            角色列表
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.AspNetUser.Roles">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.AspNetUser.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.AspNetUser.IsAuthenticated">
+            <summary>
+            是否授权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.AspNetUser.GetClaimsIdentity">
+            <summary>
+            用户认证 Claim
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.AspNetUser.GetClaimValueByType(System.String)">
+            <summary>
+            根据 Claim 获取值
+            </summary>
+            <param name="ClaimType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.IIocManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IIocManager.Container">
+            <summary>
+            IContainer
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.Scope">
+            <summary>
+            ILifetimeScope
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.IsRegistered(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            IsRegistered
+            </summary>
+            <param name="serviceType"></param>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.Resolve(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve
+            </summary>
+            <param name="type"></param>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.Resolve``1(System.String,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.Resolve``1(Autofac.Core.Parameter[])">
+            <summary>
+            Resolve
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveAll``1(System.String,Autofac.ILifetimeScope)">
+            <summary>
+            ResolveAll
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveOptional(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            ResolveOptional
+            </summary>
+            <param name="serviceType"></param>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveUnregistered(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            ResolveUnregistered
+            </summary>
+            <param name="type"></param>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveUnregistered``1(Autofac.ILifetimeScope)">
+            <summary>
+            ResolveUnregistered
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.TryResolve(System.Type,Autofac.ILifetimeScope,System.Object@)">
+            <summary>
+            TryResolve
+            </summary>
+            <param name="serviceType"></param>
+            <param name="scope"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.Resolve``1">
+            <summary>
+            Resolve
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveKeyed``1(System.Object,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveKeyed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceKey"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveNamed``1(System.String,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveNamed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveOptional``1(Autofac.Core.Parameter[])">
+            <summary>
+            ResolveOptional
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveOptionalKeyed``1(System.Object,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveOptionalKeyed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceKey"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IIocManager.ResolveOptionalNamed``1(System.String,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveOptionalNamed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.IocManager">
+            <summary>
+            Container manager
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.IocManager._container">
+            <summary>
+            IContainer
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IocManager.Container">
+            <summary>
+            IContainer
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.IocManager.SingletonInstance">
+            <summary>
+            SingletonInstance
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IocManager.Instance">
+            <summary>
+            Instance
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.Configure(Autofac.IContainer)">
+            <summary>
+            注入IContainer
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.Scope">
+            <summary>
+            Get current scope
+            </summary>
+            <returns>Scope</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.Resolve``1(System.String,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="key">key</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Resolved service</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.Resolve``1(Autofac.Core.Parameter[])">
+            <summary>
+            Resolve
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="parameters">key</param>
+            <returns>Resolved service</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.Resolve(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve
+            </summary>
+            <param name="type">Type</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Resolved service</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveAll``1(System.String,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve all
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="key">key</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Resolved services</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveUnregistered``1(Autofac.ILifetimeScope)">
+            <summary>
+            Resolve unregistered service
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Resolved service</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveUnregistered(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve unregistered service
+            </summary>
+            <param name="type">Type</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Resolved service</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.TryResolve(System.Type,Autofac.ILifetimeScope,System.Object@)">
+            <summary>
+            Try to resolve srevice
+            </summary>
+            <param name="serviceType">Type</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <param name="instance">Resolved service</param>
+            <returns>Value indicating whether service has been successfully resolved</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.IsRegistered(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            Check whether some service is registered (can be resolved)
+            </summary>
+            <param name="serviceType">Type</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveOptional(System.Type,Autofac.ILifetimeScope)">
+            <summary>
+            Resolve optional
+            </summary>
+            <param name="serviceType">Type</param>
+            <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+            <returns>Resolved service</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.Resolve``1">
+            <summary>
+            Resolve
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveKeyed``1(System.Object,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveKeyed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceKey"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveNamed``1(System.String,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveNamed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveOptional``1(Autofac.Core.Parameter[])">
+            <summary>
+            ResolveOptional
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveOptionalKeyed``1(System.Object,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveOptionalKeyed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceKey"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IocManager.ResolveOptionalNamed``1(System.String,Autofac.Core.Parameter[])">
+            <summary>
+            ResolveOptionalNamed
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.IUser">
+            <summary>
+            全局用户接口
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IUser.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IUser.LstRoles">
+            <summary>
+            角色列表
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IUser.Roles">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IUser.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IUser.IsAuthenticated">
+            <summary>
+            是否授权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IUser.GetClaimsIdentity">
+            <summary>
+            用户认证 Claim
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IUser.GetClaimValueByType(System.String)">
+            <summary>
+            根据 Claim 获取值
+            </summary>
+            <param name="ClaimType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.StaticAutofacIocManger">
+            <summary>
+            静态 AutofacIocManger
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.StaticAutofacIocManger.IocContainer">
+            <summary>
+            The Singleton IContainer.
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.StaticAutofacIocManger.Configure(Autofac.IContainer)">
+            <summary>
+            注入
+            </summary>
+            <param name="iocContainer"></param>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.StaticAutofacIocManger.Current">
+            <summary>
+            IocManager
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.StaticHttpContext">
+            <summary>
+            静态HttpContext
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.StaticHttpContext._accessor">
+            <summary>
+            IHttpContextAccessor
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.StaticHttpContext.Current">
+            <summary>
+            全局HttpContext
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.StaticHttpContext.Configure(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            注册
+            </summary>
+            <param name="accessor"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.StaticHttpContextExtensions">
+            <summary>
+            StaticHttpContext扩展
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.StaticHttpContextExtensions.UseStaticHttpContext(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            IApplicationBuilder 注入 httpContextAccessor
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.StaticServiceProvider">
+            <summary>
+            静态IServiceProvider
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.StaticServiceProvider.Current">
+            <summary>
+            服务提供
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.StaticServiceProvider.Configure(System.IServiceProvider)">
+            <summary>
+            注册
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.StaticServiceProviderExtensions">
+            <summary>
+            静态IServiceProvider
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.StaticServiceProviderExtensions.UseStaticServiceProvider(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            IApplicationBuilder 注入 IServiceProvider
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ADHelper">
+            <summary>
+            AD域认证(暂时不支持Linux，改用LdapHelper)
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ADHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ADHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Framework.ADHelper})">
+            <summary>
+            构造方法
+            </summary>
+            <param name="_logHelper"></param>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ADHelper.ADPath">
+            <summary>
+            LDAP绑定路径
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ADHelper.GetDirectoryObject(System.String,System.String)">
+            <summary>
+            普通用户调用
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ADHelper.Login(System.String,System.String)">
+            <summary>
+            AD登陆验证
+            </summary>
+            <param name="userName"></param>
+            <param name="userPwd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.Appsettings">
+            <summary>
+            appsettings.json操作类
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Appsettings.Configuration">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.Appsettings.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="contentPath"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.Appsettings.Key(System.String[])">
+            <summary>
+            封装要操作的字符
+            </summary>
+            <param name="sections"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.Appsettings.Key(System.String)">
+            <summary>
+            封装要操作的字符
+            </summary>
+            <param name="sections"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.Appsettings.Section(System.String)">
+            <summary>
+            获取配置对象
+            </summary>
+            <param name="sections"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ComHelper">
+            <summary>
+            通用帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.JsonSerialize(System.Object)">
+            <summary>
+            将对象转换成json字符串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.JsonSerializeNoNull(System.Object)">
+            <summary>
+            将对象转换成json字符串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.JsonDeserialize``1(System.String)">
+            <summary>
+            Json反序列化对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ByteSerialize(System.Object)">
+            <summary>
+            字节序列化(redis)
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ByteDeserialize``1(System.Byte[])">
+            <summary>
+            字节反序列化(redis)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.XmlSerializer``1(``0)">
+            <summary>
+            将对象转换成xml字符串
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.XmlDeserialize``1(System.String)">
+            <summary>
+            Xml反序列化  
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.XmlDeserialize``1(System.IO.Stream)">
+            <summary>
+            Xml反序列化  
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetConf(System.String)">
+            <summary>
+            获取配置文件
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetSection(System.String)">
+            <summary>
+            获取配置对象
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.StripHT(System.String)">
+            <summary>
+            去除HTML代码
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.WxTargetFormat(System.String)">
+            <summary>
+            去掉空字符串,用于微信接受对象
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ReplaceHtmlTag(System.String,System.Int32)">
+            <summary>
+            去除富文本中的HTML标签
+            </summary>
+            <param name="html"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetHostingEnvironment">
+            <summary>
+            环境变量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.ComHelper.WWWRoot">
+            <summary>
+            WWWRoot文件夹物理路径
+            D:\Projects\Svn\开发二组\201.市场品牌部Core\出国考试公众号\1.后端\Rami.WebApi.Core.Web\wwwroot
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.ComHelper.ContentRoot">
+            <summary>
+            项目根目录物理路径
+            D:\Projects\Svn\开发二组\201.市场品牌部Core\出国考试公众号\1.后端\Rami.WebApi.Core.Web
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.ComHelper.EnvName">
+            <summary>
+            当前运行环境（Development、Publish）
+            Development 
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.ComHelper.AppDomain">
+            <summary>
+            AppDomain
+            D:\Projects\Svn\开发二组\201.市场品牌部Core\出国考试公众号\1.后端\Rami.WebApi.Core.Web\bin\Debug\netcoreapp3.1\
+            NETCoreApp,Version=v3.1
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.ComHelper.HttpContext">
+            <summary>
+            当前上下文
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetAbsPath(System.String)">
+            <summary>
+            获取绝对路径
+            https://www.baidu.com
+            </summary>
+            <param name="strUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.UpdImgAbsPath(System.String,System.String)">
+            <summary>
+            更新图片的绝对路径
+            </summary>
+            <param name="root"></param>
+            <param name="virPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ReplaceAbsPath(System.String)">
+            <summary>
+            绝对路径格式化
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetPhyPath(System.String,System.String)">
+            <summary>
+            获取物理路径
+            D:\Projects\Svn\开发二组\201.市场品牌部Core\出国考试公众号\1.后端\Rami.WebApi.Core.Web\wwwroot
+            </summary>
+            <param name="root"></param>
+            <param name="strUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetPhyContentRoot(System.String)">
+            <summary>
+            获取文件物理路径 相对于根目录）
+            .NetCore上传文件只能放wwwroot文件夹里面，否则404无法浏览
+            </summary>
+            <param name="strUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetPhyWWWRoot(System.String)">
+            <summary>
+            获取WWWRoot文件夹 文件物理路径
+            </summary>
+            <param name="strUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ReplacePhyPath(System.String)">
+            <summary>
+            物理路径格式化
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.MD5Sign(System.String,System.Boolean)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="str"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.Md5Sign16(System.String,System.Boolean)">
+            <summary>
+            MD5 16位
+            </summary>
+            <param name="str"></param>
+            <param name="isLower"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.Sha1Encode(System.String)">
+            <summary>
+            Sha1加密
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ComHelper.DicSecret">
+            <summary>
+            对外接口通过私钥
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.ComHelper.InterfaceTimeStamp">
+            <summary>
+            时间截
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.InterfaceEncrypt(System.String,System.String,System.String)">
+            <summary>
+            对外接口通用加密方法
+            </summary>
+            <param name="appKey"></param>
+            <param name="timeStamp"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.InterfaceEncrypt(System.String,System.String,System.String,System.String)">
+            <summary>
+            对外接口通用加密方法
+            </summary>
+            <param name="appKey"></param>
+            <param name="secret"></param>
+            <param name="timeStamp"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumValueByStr``1(System.String)">
+            <summary>
+            通过枚举值字符串获取枚举对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumName``1(System.Int32)">
+            <summary>
+            通过值获取枚举字符串
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumDic``1">
+            <summary>
+            通过枚举类型获取字典
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumDesc``1(System.Int32)">
+            <summary>
+            获取字典描述属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumDesc``1(System.String)">
+            <summary>
+            获取字典描述属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumDesc(System.Object)">
+            <summary>
+            根据枚举对象 获取描述
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumDicDesc``1">
+            <summary>
+            获取枚举key和描述字典
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetEnumDicTextDesc``1">
+            <summary>
+            获取枚举 Text和描述字典
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ComHelper.DicMonName">
+            <summary>
+            月份名称
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertDateTimeInt(System.DateTime)">
+            <summary>
+            时间转成时间戳(秒)
+            </summary>
+            <param name="time"> DateTime时间格式</param>
+            <returns>Unix时间戳格式</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertTimeStampToDate(System.Int32)">
+            <summary>
+            Unix时间戳格式转换为DateTime时间格式
+            </summary>
+            <param name="unixTimeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertDateToTimeStampMs(System.DateTime)">
+            <summary>
+            时间转成时间戳(毫秒)
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertTimeStampToDateMs(System.Int64)">
+            <summary>
+            时间戳(毫秒)转成时间
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.DateToString(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            日期转换
+            </summary>
+            <param name="date"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.MonSub(System.DateTime,System.DateTime)">
+            <summary>
+            2个日期相隔多少月
+            </summary>
+            <param name="dt1"></param>
+            <param name="dt2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetWeekMonday(System.DateTime)">
+            <summary> 
+            计算某天对应的周一
+            </summary> 
+            <param name="date">该周中任意一天</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetWeekSunday(System.DateTime)">
+            <summary> 
+            计算某天对应的周日
+            </summary> 
+            <param name="date">该周中任意一天</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetMonStart(System.DateTime)">
+            <summary>
+            获取当前日期对应月出
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetMonEnd(System.DateTime)">
+            <summary>
+            获取当前日期对应的月末
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.IsIP(System.String)">
+            <summary>
+            检查IP地址格式
+            </summary>
+            <param name="ip"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.MoneyChanageToUpper(System.Nullable{System.Double})">
+            <summary>
+            大小写转换
+            </summary>
+            <param name="nmoney"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.DoubleToString(System.Nullable{System.Double},System.String)">
+            <summary>
+            金额转换,默认为ToString("f2")
+            </summary>
+            <param name="val"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertToChinese(System.Double)">
+            <summary>
+            数字转中文大写
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertToTradChinese(System.Double)">
+            <summary>
+            数字转中文大写
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertToCommSimCh(System.Double)">
+            <summary>
+            数字转通用繁体中文
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.ConvertToCommTradCh(System.Double)">
+            <summary>
+            数字转通用繁体中文
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetHvtThumbnail(System.String,System.Int32,System.Int32)">
+            <summary> 
+            为图片生成缩略图
+            </summary> 
+            <param name="phyPath">原图片的路径</param> 
+            <param name="width">缩略图宽</param> 
+            <param name="height">缩略图高</param> 
+            <returns></returns> 
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ComHelper.ObjLock1">
+            <summary>
+            锁1
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ComHelper.ObjLock2">
+            <summary>
+            锁2
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ComHelper.ObjLock3">
+            <summary>
+            锁3
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.HexStrToColor(System.String)">
+            <summary>
+            16进制转成RGB
+            </summary>
+            <param name="strHxColor">设置16进制颜色(#FFFFFF) </param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.SysColorToStr(System.Drawing.Color)">
+            <summary>
+            系统颜色转RB
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetRandomVal``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            数据随机
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="mulpit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.GetPercentByDivision(System.Int32,System.Int32)">
+            <summary>
+            两int型数相除转换成百分比
+            </summary>
+            <param name="divisorOne"></param>
+            <param name="divisorTwo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.StrSplitList(System.String,System.String)">
+            <summary>
+            字符串分割
+            </summary>
+            <param name="str"></param>
+            <param name="split"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ComHelper.CheckPhoneVaild(System.String)">
+            <summary>
+            验证手机是否正确
+            </summary>
+            <param name="phone"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.LdapHelper">
+            <summary>
+            AD认证
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.LdapHelper.LdapHost">
+            <summary>
+            域认证地址（ldap.baidu.com）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.LdapHelper.LdapPort">
+            <summary>
+            域认证端口（默认：389）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.LdapHelper.MailSuffix">
+            <summary>
+            域邮箱后缀（@baidu.com）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.LdapHelper.SearchBase">
+            <summary>
+            域网段（DC=baidu,DC=group）
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.LdapHelper.Attrs">
+            <summary>
+            域认证查询字段（displayname|mail|sn）
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LdapHelper.logHelper">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LdapHelper.#ctor(Rami.WebApi.Core.Framework.ILogHelper{Rami.WebApi.Core.Framework.LdapHelper})">
+            <summary>
+            AD认证
+            </summary>
+            <param name="logHelper"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LdapHelper.LdapAuthenticate(System.String,System.String)">
+            <summary>
+            验证
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.MD5Helper">
+            <summary>
+            MD5 帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.MD5Helper.MD5Encrypt16(System.String)">
+            <summary>
+            16位MD5加密
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.MD5Helper.MD5Encrypt32(System.String)">
+            <summary>
+            32位MD5加密
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.MD5Helper.MD5Encrypt64(System.String)">
+            <summary>
+            64位MD5加密
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.UpPathHelper">
+            <summary>
+            上传文件路径帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.UpPathHelper.DicUpPath">
+            <summary>
+            上传目录定义
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UpPathHelper.GetUploadPhyFullPath(System.String)">
+            <summary>
+            根据上传目录字典获取物理上传路径
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UpPathHelper.GetUploadPhyPath(System.String,System.DateTime)">
+            <summary>
+            根据上传目录字典获取物理上传路径
+            </summary>
+            <param name="key"></param>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UpPathHelper.GetUploadAbsFullPath(System.String)">
+            <summary>
+            根据上传目录字典获取绝对上传路径
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UpPathHelper.GetUploadAbsPath(System.String,System.DateTime)">
+            <summary>
+            根据上传目录字典获取绝对路径
+            </summary>
+            <param name="key"></param>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UpPathHelper.GetUploadVirFullPath(System.String)">
+            <summary>
+            根据上传目录字典获取虚拟上传路径
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UpPathHelper.GetUploadVirPath(System.String,System.DateTime)">
+            <summary>
+            根据上传目录字典获取虚拟路径
+            </summary>
+            <param name="key"></param>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.UtilConvert">
+            <summary>
+            类型转换帮助类
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToInt(System.Object)">
+            <summary>
+            Convert Int
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToInt(System.Object,System.Int32)">
+            <summary>
+            Convert Int
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToMoney(System.Object)">
+            <summary>
+            Convert double
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToMoney(System.Object,System.Double)">
+            <summary>
+            Convert double
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToString(System.Object)">
+            <summary>
+            Convert string
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToString(System.Object,System.String)">
+            <summary>
+            Convert string
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToDecimal(System.Object)">
+            <summary>
+            Convert Decimal
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToDecimal(System.Object,System.Decimal)">
+            <summary>
+            Convert Decimal
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToDate(System.Object)">
+            <summary>
+            Convert DateTime
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToDate(System.Object,System.DateTime)">
+            <summary>
+            Convert DateTime
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.UtilConvert.ObjToBool(System.Object)">
+            <summary>
+            Convert bool
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ChatHub">
+            <summary>
+            通信 HUB
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ChatHub.SendMessageToGroupAsync(System.String,System.String)">
+            <summary>
+            向指定群组发送信息
+            </summary>
+            <param name="groupName">组名</param>
+            <param name="message">信息内容</param>  
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ChatHub.AddToGroup(System.String)">
+            <summary>
+            加入指定组
+            </summary>
+            <param name="groupName">组名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ChatHub.RemoveFromGroup(System.String)">
+            <summary>
+            退出指定组
+            </summary>
+            <param name="groupName">组名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ChatHub.SendPrivateMessage(System.String,System.String)">
+            <summary>
+            向指定成员发送信息
+            </summary>
+            <param name="user">成员名</param>
+            <param name="message">信息内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ChatHub.OnConnectedAsync">
+            <summary>
+            当连接建立时运行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ChatHub.OnDisconnectedAsync(System.Exception)">
+            <summary>
+            当链接断开时运行
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.IChatClient">
+            <summary>
+            Hub 客户端
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IChatClient.ReceiveMessage(System.Object)">
+            <summary>
+            SignalR接收信息
+            </summary>
+            <param name="message">信息内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IChatClient.ReceiveMessage(System.String,System.String)">
+            <summary>
+            SignalR接收信息
+            </summary>
+            <param name="user">指定接收客户端</param>
+            <param name="message">信息内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IChatClient.ReceiveUpdate(System.Object)">
+            <summary>
+            更新操作
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ILogHelper">
+            <summary>
+            日志接口
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.Debug(System.Object,System.Exception)">
+            <summary>
+            Debug
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.Error(System.Object,System.Exception)">
+            <summary>
+            Error
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.Fatal(System.Object,System.Exception)">
+            <summary>
+            Fatal
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.Info(System.Object,System.Exception)">
+            <summary>
+            Info
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.Warn(System.Object,System.Exception)">
+            <summary>
+            Warn
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.ApiLog(System.Object,System.Exception)">
+            <summary>
+            ApiLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.SqlLog(System.Object,System.Exception)">
+            <summary>
+            SqlLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.ExceptionLog(System.Object,System.Exception)">
+            <summary>
+            ExceptionLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ILogHelper.AopLog(System.Object,System.Exception)">
+            <summary>
+            AopLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ILogHelper`1">
+            <summary>
+            日志接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.LogHelper`1">
+            <summary>
+            日志帮助类
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.Loggers">
+            <summary>
+            Class和日志对象字典
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.repository">
+            <summary>
+            日志创库
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.comLog">
+            <summary>
+            普通日志
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.apiLog">
+            <summary>
+            ApiLog
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.sqlLog">
+            <summary>
+            SqlLog
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.exceptionLog">
+            <summary>
+            ExceptionLog
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.LogHelper`1.aopLog">
+            <summary>
+            AopLog
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.Debug(System.Object,System.Exception)">
+            <summary>
+            Debug
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.Error(System.Object,System.Exception)">
+            <summary>
+            Error
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.Fatal(System.Object,System.Exception)">
+            <summary>
+            Fatal
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.Info(System.Object,System.Exception)">
+            <summary>
+            Info
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.Warn(System.Object,System.Exception)">
+            <summary>
+            Warn
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.ApiLog(System.Object,System.Exception)">
+            <summary>
+            ApiLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.SqlLog(System.Object,System.Exception)">
+            <summary>
+            SqlLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.ExceptionLog(System.Object,System.Exception)">
+            <summary>
+            ExceptionLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.LogHelper`1.AopLog(System.Object,System.Exception)">
+            <summary>
+            AopLog
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.IRepository">
+            <summary>
+            数据仓储接口
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.IRepository.Context">
+            <summary>
+            数据库实例
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Add``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Add``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            写入实体数据
+            </summary>
+            <param name="item"></param>
+            <param name="insertColumns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Add``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量插入实体(速度快)
+            </summary>
+            <param name="lstData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.AddAsync``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.AddAsync``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            写入实体数据
+            </summary>
+            <param name="item"></param>
+            <param name="insertColumns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.AddAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量插入实体(速度快)
+            </summary>
+            <param name="lstData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Save``1(``0)">
+            <summary>
+            保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Save``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="lstData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.SaveAsync``1(``0)">
+            <summary>
+            保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.SaveAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量保存 不支持多组件
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="lstData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.DeleteById``1(System.Object)">
+            <summary>
+            根据主键删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Delete``1(``0)">
+            <summary>
+            根据实体删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.DeleteByIds``1(System.Object[])">
+            <summary>
+            根据主键列表删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.DeleteByIdAsync``1(System.Object)">
+            <summary>
+            根据主键删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.DeleteAsync``1(``0)">
+            <summary>
+            根据实体删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.DeleteByIdsAsync``1(System.Object[])">
+            <summary>
+            根据主键列表删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Update``1(``0)">
+            <summary>
+            更新实体
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Update``1(``0,System.String)">
+            <summary>
+            根据条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Update``1(System.String,SqlSugar.SugarParameter[])">
+            <summary>
+            根据Sql更新实体
+            </summary>
+            <param name="strSql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Update``1(``0,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            根据列、条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="lstColumns"></param>
+            <param name="lstIgnoreColumns"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.UpdateAsync``1(``0)">
+            <summary>
+            更新实体
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.UpdateAsync``1(``0,System.String)">
+            <summary>
+            根据条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.UpdateAsync``1(System.String,SqlSugar.SugarParameter[])">
+            <summary>
+            根据Sql更新实体
+            </summary>
+            <param name="strSql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.UpdateAsync``1(``0,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            根据列、条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="lstColumns"></param>
+            <param name="lstIgnoreColumns"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryById``1(System.Object)">
+            <summary>
+            根据ID查询对象
+            </summary>
+            <param name="objId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryById``1(System.Object,System.Boolean)">
+            <summary>
+            根据ID查询对象
+            </summary>
+            <param name="objId"></param>
+            <param name="blnUseCache"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryByIDs``1(System.Object[])">
+            <summary>
+            根据IDS 查询列表
+            </summary>
+            <param name="lstIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryByIdAsync``1(System.Object)">
+            <summary>
+            根据ID查询对象
+            </summary>
+            <param name="objId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryByIdAsync``1(System.Object,System.Boolean)">
+            <summary>
+            根据ID查询对象
+            </summary>
+            <param name="objId"></param>
+            <param name="blnUseCache"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryByIDsAsync``1(System.Object[])">
+            <summary>
+            根据IDS 查询列表
+            </summary>
+            <param name="lstIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.FirstOrDefault``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据Linq查询第一条数据
+            </summary>
+            <param name="whereExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.FirstOrDefault``1(System.String)">
+            <summary>
+            根据Where语句查询第一条数据
+            </summary>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.FirstOrDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据Linq查询第一条数据
+            </summary>
+            <param name="whereExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.FirstOrDefaultAsync``1(System.String)">
+            <summary>
+            根据Where语句查询第一条数据
+            </summary>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1">
+            <summary>
+            查询实体列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            根据Para（SQL WHERE LINQ）查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.String)">
+            <summary>
+            根据条件查询
+            </summary>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据Linq查询
+            </summary>
+            <param name="whereExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            根据Linq查询并排序
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)">
+            <summary>
+            根据Linq查询和排序
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="orderByExpression"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.String,System.String)">
+            <summary>
+            根据Where居于查询和排序
+            </summary>
+            <param name="strWhere"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.String)">
+            <summary>
+            根据Linq查询和排序，并返回Top条
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="intTop"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.String,System.Int32,System.String)">
+            <summary>
+            根据Where语句和排序，并返回Top条
+            </summary>
+            <param name="strWhere"></param>
+            <param name="intTop"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            根据Linq查询和排序，并返回分页数据
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="intPageIndex"></param>
+            <param name="intPageSize"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.Query``1(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            根据Where语句查询和排序，并返回分页数据
+            </summary>
+            <param name="strWhere"></param>
+            <param name="intPageIndex"></param>
+            <param name="intPageSize"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryPage``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            根据Linq查询和排序，并返回分页信息
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="intPageIndex"></param>
+            <param name="intPageSize"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryPage``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            分页查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryMuch``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Object[]}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Boolean}})">
+            <summary>
+            多表查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="joinExpression"></param>
+            <param name="selectExpression"></param>
+            <param name="whereLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1">
+            <summary>
+            查询实体列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            根据Para（SQL WHERE LINQ）查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.String)">
+            <summary>
+            根据条件查询
+            </summary>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据Linq查询
+            </summary>
+            <param name="whereExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            根据Linq查询并排序
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)">
+            <summary>
+            根据Linq查询和排序
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="orderByExpression"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.String,System.String)">
+            <summary>
+            根据Where居于查询和排序
+            </summary>
+            <param name="strWhere"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.String)">
+            <summary>
+            根据Linq查询和排序，并返回Top条
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="intTop"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.String,System.Int32,System.String)">
+            <summary>
+            根据Where语句和排序，并返回Top条
+            </summary>
+            <param name="strWhere"></param>
+            <param name="intTop"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            根据Linq查询和排序，并返回分页数据
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="intPageIndex"></param>
+            <param name="intPageSize"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryAsync``1(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            根据Where语句查询和排序，并返回分页数据
+            </summary>
+            <param name="strWhere"></param>
+            <param name="intPageIndex"></param>
+            <param name="intPageSize"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryPageAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            根据Linq查询和排序，并返回分页信息
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="intPageIndex"></param>
+            <param name="intPageSize"></param>
+            <param name="strOrderByFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryPageAsync``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            分页查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.QueryMuchAsync``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Object[]}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Boolean}})">
+            <summary>
+            多表查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="joinExpression"></param>
+            <param name="selectExpression"></param>
+            <param name="whereLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.SqlQuery``1(System.String,System.Object)">
+            <summary>
+            执行Sql,返回List T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.SqlQuerySingle``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T（单条记录）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.ExecuteCommand(System.String,System.Object)">
+            <summary>
+            执行Sql返回影响条数
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.GetScalar(System.String,System.Object)">
+            <summary>
+            执行Sql，返回object
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.GetScalar``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.SqlQueryAsync``1(System.String,System.Object)">
+            <summary>
+            执行Sql,返回List T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.SqlQuerySingleAsync``1(System.String,System.Object)">
+            <summary>
+            执行Sql,返回 T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.ExecuteCommandAsync(System.String,System.Object)">
+            <summary>
+            执行Sql返回影响条数
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.GetScalarAsync(System.String,System.Object)">
+            <summary>
+            执行Sql，返回object
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.GetScalarAsync``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.BeginTran">
+            <summary>
+            开始事务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.CommitTran">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.RollbackTran">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.WorkTransaction(System.Func{Rami.WebApi.Core.Framework.Result})">
+            <summary>
+            事务Func
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.RunTransaction(System.Action)">
+            <summary>
+            事务Action
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.IRepository.WorkTransactionAsync(System.Func{System.Threading.Tasks.Task{Rami.WebApi.Core.Framework.Result}})">
+            <summary>
+            事务Func 异步
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.Pager`1">
+            <summary>
+            分页返回值
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Pager`1.PageIndex">
+            <summary>
+            当前页标
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Pager`1.PageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Pager`1.TotalCount">
+            <summary>
+            总行数
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Pager`1.TotalPages">
+            <summary>
+             总页数
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Pager`1.Datas">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Pager`1.Custom">
+            <summary>
+            自定义对象
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.Para`1">
+            <summary>
+            搜索条件
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.PageIndex">
+            <summary>
+            页数，默认第一页
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.PageSize">
+            <summary>
+            每页多少条,默认10条
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.Filter">
+            <summary>
+            Linq，对API接口无效
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.OrderKey">
+            <summary>
+            排序,对API接口无效
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.Entity">
+            <summary>
+            最后时间戳,,为空时取全部
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.SQL">
+            <summary>
+            SQL语句
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Para`1.WhereSQL">
+            <summary>
+            Where语句
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.PredicateBuilder">
+            <summary>
+            Enables the efficient, dynamic composition of query predicates.
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.True``1">
+            <summary>
+            Creates a predicate that evaluates to true.
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.False``1">
+            <summary>
+            Creates a predicate that evaluates to false.
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.Create``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Creates a predicate expression from the specified lambda expression.
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines the first predicate with the second using the logical "and".
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines the first predicate with the second using the logical "or".
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.Not``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Negates the predicate.
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.PredicateBuilder.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+            Combines the first expression with the second using the specified merge function.
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.ParameterRebinder">
+            <summary>
+            http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.ParameterRebinder.map">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ParameterRebinder.#ctor(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression})">
+            <summary>
+            
+            </summary>
+            <param name="map"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ParameterRebinder.ReplaceParameters(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression},System.Linq.Expressions.Expression)">
+            <summary>
+            
+            </summary>
+            <param name="map"></param>
+            <param name="exp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.ParameterRebinder.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.RepositorySugar">
+            <summary>
+            数据仓储-SqlSugar实现
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RepositorySugar._context">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.RepositorySugar.Context">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RepositorySugar._db">
+            <summary>
+            数据库实例
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.RepositorySugar.Db">
+            <summary>
+            数据库实例
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.RepositorySugar.Ado">
+            <summary>
+            Ado
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RepositorySugar.logHelper">
+            <summary>
+            ILogHelper
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.RepositorySugar._connPath">
+            <summary>
+            数据库链接
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="connPath"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Add``1(``0)">
+            <summary>
+            写入实体数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Add``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            写入实体数据
+            </summary>
+            <param name="entity">实体类</param>
+            <param name="insertColumns">指定只插入列</param>
+            <returns>返回自增量列</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Add``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量插入实体(速度快)
+            </summary>
+            <param name="lstData">实体集合</param>
+            <returns>影响行数</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.AddAsync``1(``0)">
+            <summary>
+            写入实体数据
+            </summary>
+            <param name="item">博文实体类</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.AddAsync``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            写入实体数据
+            </summary>
+            <param name="entity">实体类</param>
+            <param name="insertColumns">指定只插入列</param>
+            <returns>返回自增量列</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.AddAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量插入实体(速度快)
+            </summary>
+            <param name="lstData">实体集合</param>
+            <returns>影响行数</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Save``1(``0)">
+            <summary>
+            保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Save``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="lstData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.SaveAsync``1(``0)">
+            <summary>
+            保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.SaveAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量保存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="lstData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Delete``1(``0)">
+            <summary>
+            根据实体删除一条数据
+            </summary>
+            <param name="entity">博文实体类</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.DeleteById``1(System.Object)">
+            <summary>
+            删除指定ID的数据
+            </summary>
+            <param name="id">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.DeleteByIds``1(System.Object[])">
+            <summary>
+            删除指定ID集合的数据(批量删除)
+            </summary>
+            <param name="ids">主键ID集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.DeleteAsync``1(``0)">
+            <summary>
+            根据实体删除一条数据
+            </summary>
+            <param name="entity">博文实体类</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.DeleteByIdAsync``1(System.Object)">
+            <summary>
+            删除指定ID的数据
+            </summary>
+            <param name="id">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.DeleteByIdsAsync``1(System.Object[])">
+            <summary>
+            删除指定ID集合的数据(批量删除)
+            </summary>
+            <param name="ids">主键ID集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Update``1(``0)">
+            <summary>
+            更新实体数据
+            </summary>
+            <param name="entity">博文实体类</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Update``1(``0,System.String)">
+            <summary>
+            根据条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Update``1(System.String,SqlSugar.SugarParameter[])">
+            <summary>
+            根据Sql更新实体
+            </summary>
+            <param name="strSql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Update``1(``0,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            根据列、条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="lstColumns"></param>
+            <param name="lstIgnoreColumns"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.UpdateAsync``1(``0)">
+            <summary>
+            更新实体数据
+            </summary>
+            <param name="entity">博文实体类</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.UpdateAsync``1(``0,System.String)">
+            <summary>
+            根据条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.UpdateAsync``1(System.String,SqlSugar.SugarParameter[])">
+            <summary>
+            根据Sql更新实体
+            </summary>
+            <param name="strSql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.UpdateAsync``1(``0,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            根据列、条件更新实体
+            </summary>
+            <param name="entity"></param>
+            <param name="lstColumns"></param>
+            <param name="lstIgnoreColumns"></param>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryById``1(System.Object)">
+            <summary>
+            功能描述:根据ID查询对象
+            </summary>
+            <param name="objId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryById``1(System.Object,System.Boolean)">
+            <summary>
+            功能描述:根据ID查询一条数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="objId">id（必须指定主键特性 [SugarColumn(IsPrimaryKey=true)]），如果是联合主键，请使用Where条件</param>
+            <param name="blnUseCache">是否使用缓存</param>
+            <returns>数据实体</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryByIDs``1(System.Object[])">
+            <summary>
+            功能描述:根据ID查询数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="lstIds">id列表（必须指定主键特性 [SugarColumn(IsPrimaryKey=true)]），如果是联合主键，请使用Where条件</param>
+            <returns>数据实体列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryByIdAsync``1(System.Object)">
+            <summary>
+            功能描述:根据ID查询对象
+            </summary>
+            <param name="objId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryByIdAsync``1(System.Object,System.Boolean)">
+            <summary>
+            功能描述:根据ID查询一条数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="objId">id（必须指定主键特性 [SugarColumn(IsPrimaryKey=true)]），如果是联合主键，请使用Where条件</param>
+            <param name="blnUseCache">是否使用缓存</param>
+            <returns>数据实体</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryByIDsAsync``1(System.Object[])">
+            <summary>
+            功能描述:根据ID查询数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="lstIds">id列表（必须指定主键特性 [SugarColumn(IsPrimaryKey=true)]），如果是联合主键，请使用Where条件</param>
+            <returns>数据实体列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.FirstOrDefault``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据Linq查询第一条数据
+            </summary>
+            <param name="whereExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.FirstOrDefault``1(System.String)">
+            <summary>
+            根据Where语句查询第一条数据
+            </summary>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.FirstOrDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据Linq查询第一条数据
+            </summary>
+            <param name="whereExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.FirstOrDefaultAsync``1(System.String)">
+            <summary>
+            根据Where语句查询第一条数据
+            </summary>
+            <param name="strWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.GetQueryByPara``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            Para转ISugarQueryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1">
+            <summary>
+            功能描述:查询所有数据
+            作　　者:Blog.Core
+            </summary>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            根据Para（SQL WHERE LINQ）查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.String)">
+            <summary>
+            功能描述:查询数据列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            功能描述:查询数据列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">whereExpression</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            功能描述:查询一个列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)">
+            <summary>
+            功能描述:查询一个列表
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="orderByExpression"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.String,System.String)">
+            <summary>
+            功能描述:查询一个列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.String)">
+            <summary>
+            功能描述:查询前N条数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="intTop">前N条</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.String,System.Int32,System.String)">
+            <summary>
+            功能描述:查询前N条数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <param name="intTop">前N条</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            功能描述:分页查询
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="intPageIndex">页码（下标0）</param>
+            <param name="intPageSize">页大小</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.Query``1(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            功能描述:分页查询
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <param name="intPageIndex">页码（下标0）</param>
+            <param name="intPageSize">页大小</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryPage``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            分页查询[使用版本，其他分页未测试]
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="intPageIndex">页码（下标0）</param>
+            <param name="intPageSize">页大小</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryPage``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryMuch``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Object[]}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Boolean}})">
+             <summary> 
+            查询-多表查询
+             </summary> 
+             <typeparam name="T">实体1</typeparam> 
+             <typeparam name="T2">实体2</typeparam> 
+             <typeparam name="T3">实体3</typeparam>
+             <typeparam name="TResult">返回对象</typeparam>
+             <param name="joinExpression">关联表达式 (join1,join2) => new object[] {JoinType.Left,join1.UserNo==join2.UserNo}</param> 
+             <param name="selectExpression">返回表达式 (s1, s2) => new { Id =s1.UserNo, Id1 = s2.UserNo}</param>
+             <param name="whereLambda">查询表达式 (w1, w2) =>w1.UserNo == "")</param> 
+             <returns>值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1">
+            <summary>
+            功能描述:查询所有数据
+            作　　者:Blog.Core
+            </summary>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            根据Para（SQL WHERE LINQ）查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.String)">
+            <summary>
+            功能描述:查询数据列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            功能描述:查询数据列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">whereExpression</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            功能描述:查询一个列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)">
+            <summary>
+            功能描述:查询一个列表
+            </summary>
+            <param name="whereExpression"></param>
+            <param name="orderByExpression"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.String,System.String)">
+            <summary>
+            功能描述:查询一个列表
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.String)">
+            <summary>
+            功能描述:查询前N条数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="intTop">前N条</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.String,System.Int32,System.String)">
+            <summary>
+            功能描述:查询前N条数据
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <param name="intTop">前N条</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            功能描述:分页查询
+            作　　者:Blog.Core
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="intPageIndex">页码（下标0）</param>
+            <param name="intPageSize">页大小</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryAsync``1(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            功能描述:分页查询
+            作　　者:Blog.Core
+            </summary>
+            <param name="strWhere">条件</param>
+            <param name="intPageIndex">页码（下标0）</param>
+            <param name="intPageSize">页大小</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns>数据列表</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryPageAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32,System.String)">
+            <summary>
+            分页查询[使用版本，其他分页未测试]
+            </summary>
+            <param name="whereExpression">条件表达式</param>
+            <param name="intPageIndex">页码（下标0）</param>
+            <param name="intPageSize">页大小</param>
+            <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryPageAsync``1(Rami.WebApi.Core.Framework.Para{``0})">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="para"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.QueryMuchAsync``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Object[]}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2,System.Boolean}})">
+             <summary> 
+            查询-多表查询
+             </summary> 
+             <typeparam name="T">实体1</typeparam> 
+             <typeparam name="T2">实体2</typeparam> 
+             <typeparam name="T3">实体3</typeparam>
+             <typeparam name="TResult">返回对象</typeparam>
+             <param name="joinExpression">关联表达式 (join1,join2) => new object[] {JoinType.Left,join1.UserNo==join2.UserNo}</param> 
+             <param name="selectExpression">返回表达式 (s1, s2) => new { Id =s1.UserNo, Id1 = s2.UserNo}</param>
+             <param name="whereLambda">查询表达式 (w1, w2) =>w1.UserNo == "")</param> 
+             <returns>值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.SqlQuery``1(System.String,System.Object)">
+            <summary>
+            执行Sql,返回List T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.SqlQuerySingle``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T（单条记录）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.ExecuteCommand(System.String,System.Object)">
+            <summary>
+            执行Sql返回影响条数
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.GetScalar(System.String,System.Object)">
+            <summary>
+            执行Sql，返回object
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.GetScalar``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.SqlQueryAsync``1(System.String,System.Object)">
+            <summary>
+            执行Sql,返回List T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.SqlQuerySingleAsync``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T（单条记录）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.ExecuteCommandAsync(System.String,System.Object)">
+            <summary>
+            执行Sql返回影响条数
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.GetScalarAsync(System.String,System.Object)">
+            <summary>
+            执行Sql，返回object
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.GetScalarAsync``1(System.String,System.Object)">
+            <summary>
+            执行Sql，返回T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.BeginTran">
+            <summary>
+            开始事务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.CommitTran">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.RollbackTran">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.WorkTransaction(System.Func{Rami.WebApi.Core.Framework.Result})">
+            <summary>
+            事务Action
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.RunTransaction(System.Action)">
+            <summary>
+            事务Func
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.RepositorySugar.WorkTransactionAsync(System.Func{System.Threading.Tasks.Task{Rami.WebApi.Core.Framework.Result}})">
+            <summary>
+            事务Action 异步
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.Result">
+            <summary>
+            结果
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.Result._code">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Result.Code">
+            <summary>
+            状态码：0000为成功 0001验证失败
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Result.IsSucc">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Result.Message">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.Result`1">
+            <summary>
+            结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.Result`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.SugarDbContext">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.SugarDbContext._loggerHelper">
+            <summary>
+            日志(可改用Log4记录SQL执行日志)
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.#cctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.SugarDbContext.Db">
+            <summary>
+            数据连接对象 
+            Blog.Core 
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.SugarDbContext.Context">
+            <summary>
+            数据库上下文实例（自动关闭连接）
+            Blog.Core 
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.SugarDbContext.ConnConf">
+            <summary>
+            数据库配置
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.SugarDbContext.ConnectionString">
+            <summary>
+            链接字符串
+            </summary>
+        </member>
+        <member name="P:Rami.WebApi.Core.Framework.SugarDbContext.DbType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.#ctor(System.Boolean)">
+            <summary>
+            功能描述:构造函数
+            作　　者:Blog.Core
+            </summary>
+            <param name="isAutoClose">是否自动关闭连接</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.#ctor(System.String,System.Boolean)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="_connConf"></param>
+            <param name="_isAutoClose"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.#ctor(System.String,SqlSugar.DbType,System.Boolean)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="_conn"></param>
+            <param name="_dbType"></param>
+            <param name="_isAutoClose"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.InitDbContext(System.String,System.Boolean)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="_connConf"></param>
+            <param name="_isAutoClose"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.InitDbContext(System.String,SqlSugar.DbType,System.Boolean)">
+            <summary>
+            初始化数据库上下文
+            </summary>
+            <param name="_conn"></param>
+            <param name="_dbType"></param>
+            <param name="_isAutoClose"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.InitDbContext(System.Boolean)">
+            <summary>
+            初始化数据库上下文
+            </summary>
+            <param name="isAutoClose"></param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetParas(SqlSugar.SugarParameter[])">
+            <summary>
+            获取Sql参数列表
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetEntityDB">
+            <summary>
+            功能描述:获取数据库处理对象
+            作　　者:Blog.Core
+            </summary>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetEntityDB(SqlSugar.SqlSugarClient)">
+            <summary>
+            功能描述:获取数据库处理对象
+            作　　者:Blog.Core
+            </summary>
+            <param name="db">db</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.CreateClassFileByDBTalbe(System.String)">
+            <summary>
+            功能描述:根据数据库表生产实体类
+            作　　者:Blog.Core
+            </summary>       
+            <param name="strPath">实体类存放路径</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.CreateClassFileByDBTalbe(System.String,System.String)">
+            <summary>
+            功能描述:根据数据库表生产实体类
+            作　　者:Blog.Core
+            </summary>
+            <param name="strPath">实体类存放路径</param>
+            <param name="strNameSpace">命名空间</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.CreateClassFileByDBTalbe(System.String,System.String,System.String[])">
+            <summary>
+            功能描述:根据数据库表生产实体类
+            作　　者:Blog.Core
+            </summary>
+            <param name="strPath">实体类存放路径</param>
+            <param name="strNameSpace">命名空间</param>
+            <param name="lstTableNames">生产指定的表</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.CreateClassFileByDBTalbe(System.String,System.String,System.String[],System.String,System.Boolean)">
+            <summary>
+            功能描述:根据数据库表生产实体类
+            作　　者:Blog.Core
+            </summary>
+            <param name="strPath">实体类存放路径</param>
+            <param name="strNameSpace">命名空间</param>
+            <param name="lstTableNames">生产指定的表</param>
+            <param name="strInterface">实现接口</param>
+            <param name="blnSerializable">是否自动释放</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.CreateTableByEntity``1(System.Boolean,``0[])">
+            <summary>
+            功能描述:根据实体类生成数据库表
+            作　　者:Blog.Core
+            </summary>
+            <param name="blnBackupTable">是否备份表</param>
+            <param name="lstEntitys">指定的实体</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.CreateTableByEntity(System.Boolean,System.Type[])">
+            <summary>
+            功能描述:根据实体类生成数据库表
+            作　　者:Blog.Core
+            </summary>
+            <param name="blnBackupTable">是否备份表</param>
+            <param name="lstEntitys">指定的实体</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetDbContext(System.Boolean)">
+            <summary>
+            功能描述:获得一个DbContext
+            作　　者:Blog.Core
+            </summary>
+            <param name="isAutoClose">是否自动关闭连接（如果为false，则使用接受时需要手动关闭Db）</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetDbContextByConnPath(System.String,System.Boolean)">
+            <summary>
+            功能描述:设置初始化参数
+            作　　者:Blog.Core
+            </summary>
+            <param name="connConf">数据库链接配置路径字符串</param>
+            <param name="isAutoClose">是否自动关闭连接</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetDbContextByConnDbType(System.String,SqlSugar.DbType,System.Boolean)">
+            <summary>
+            功能描述:设置初始化参数
+            作　　者:Blog.Core
+            </summary>
+            <param name="conn">连接字符串</param>
+            <param name="dbType">数据库类型</param>
+            <param name="isAutoClose">是否自动关闭连接</param>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetConnectionConfig(System.Boolean,System.Boolean)">
+            <summary>
+            功能描述:创建一个链接配置
+            作　　者:Blog.Core
+            </summary>
+            <param name="blnIsAutoCloseConnection">是否自动关闭连接</param>
+            <param name="blnIsShardSameThread">是否夸类事务</param>
+            <returns>ConnectionConfig</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetCustomDB(SqlSugar.ConnectionConfig)">
+            <summary>
+            功能描述:获取一个自定义的DB
+            作　　者:Blog.Core
+            </summary>
+            <param name="config">config</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetCustomEntityDB(SqlSugar.SqlSugarClient)">
+            <summary>
+            功能描述:获取一个自定义的数据库处理对象
+            作　　者:Blog.Core
+            </summary>
+            <param name="sugarClient">sugarClient</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:Rami.WebApi.Core.Framework.SugarDbContext.GetCustomEntityDB(SqlSugar.ConnectionConfig)">
+            <summary>
+            功能描述:获取一个自定义的数据库处理对象
+            作　　者:Blog.Core
+            </summary>
+            <param name="config">config</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="T:Rami.WebApi.Core.Framework.DataBaseType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.DataBaseType.MySql">
+            <summary>
+            MySql
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.DataBaseType.SqlServer">
+            <summary>
+            SqlServer
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.DataBaseType.Sqlite">
+            <summary>
+            Sqlite
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.DataBaseType.Oracle">
+            <summary>
+            Oracle
+            </summary>
+        </member>
+        <member name="F:Rami.WebApi.Core.Framework.DataBaseType.PostgreSQL">
+            <summary>
+            PostgreSQL
+            </summary>
+        </member>
+    </members>
+</doc>
