@@ -29,6 +29,7 @@ dotnet run <br>
 #如果vue项目和webapi一起部署，设置appsettings.json StartUrl 为 backstage.html 可以修改首页为公众号后台管理登录界面 <br>
 
 #创建本地mysql数据库 #修改appsettings.json 数据库连接，修改IsDbSeedEnabled 为 true； <br>
-#调用api/Permission/SeedData 生成库表 #修改IsDbSeedEnabled 为 false； <br>
+#调用api/Permission/SeedData 生成库表 <br>
+#修改IsDbSeedEnabled 为 false； <br>
 
 #执行项目里面ReadMe.md的数据还原脚本下脚本生成基础数据 <br>
