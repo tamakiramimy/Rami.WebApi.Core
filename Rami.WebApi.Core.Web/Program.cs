@@ -94,7 +94,7 @@ namespace Rami.WebApi.Core.Web
 
             var trigger1 = TriggerBuilder.Create()
                 .WithIdentity("job1", "group1")
-                .WithCronSchedule("0 0/1 * * * ? *")
+                .WithCronSchedule("0 0/10 * * * ? *")
                 //.StartNow() // 不能马上执行，因为注入的信息还没拿到
                 .Build();
 
