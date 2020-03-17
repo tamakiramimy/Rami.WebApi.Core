@@ -71,13 +71,18 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="5.0.2" />
-    <PackageReference Include="UEditor.Core" Version="0.9.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Rami.WebApi.Core.Domain\Rami.WebApi.Core.Domain.csproj" />
     <ProjectReference Include="..\Rami.WebApi.Core.Framework\Rami.WebApi.Core.Framework.csproj" />
     <ProjectReference Include="..\Rami.WebApi.Core.Service\Rami.WebApi.Core.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UEditorNetCore">
+      <HintPath>..\DllLib\UEditorNetCore.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

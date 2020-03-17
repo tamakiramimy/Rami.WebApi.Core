@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rami.WebApi.Core.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rami.WebApi.Core.Service", "Rami.WebApi.Core.Service\Rami.WebApi.Core.Service.csproj", "{D7A238E0-88B1-4AD4-ADEB-73E2232E843C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DllLib", "DllLib", "{EE058591-B01C-473B-85B0-5E27EDBE4444}"
+	ProjectSection(SolutionItems) = preProject
+		DllLib\UEditorNetCore.dll = DllLib\UEditorNetCore.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,7 +43,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C42051FB-8298-4DAB-9EF1-632152E3F1D8}
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {C42051FB-8298-4DAB-9EF1-632152E3F1D8}
 	EndGlobalSection
 EndGlobal
