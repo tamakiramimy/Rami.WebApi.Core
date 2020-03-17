@@ -3,7 +3,8 @@
 
 
 项目预览地址：
-http://wechat.tamakirami.top/
+http://wechat.tamakirami.top
+
 测试账号密码：admin/admin
 服务器为谷歌云：Centos7 nginx 1核 1.7g 10g hdd
 
