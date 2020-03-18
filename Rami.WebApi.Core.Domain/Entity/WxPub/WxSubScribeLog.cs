@@ -34,11 +34,13 @@ namespace Rami.WebApi.Core.Domain
         /// <summary>
         /// 二维码场景key
         /// </summary>
+        [SqlSugar.SugarColumn(IsNullable = true)]
         public string QrSceneStr { get; set; }
 
         /// <summary>
         /// 二维码Ticket
         /// </summary>
+        [SqlSugar.SugarColumn(IsNullable = true)]
         public string QrTicketId { get; set; }
     }
 }

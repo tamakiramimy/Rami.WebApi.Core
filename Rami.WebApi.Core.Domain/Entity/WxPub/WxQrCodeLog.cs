@@ -29,16 +29,19 @@ namespace Rami.WebApi.Core.Domain
         /// <summary>
         /// 二维码场景key
         /// </summary>
+        [SqlSugar.SugarColumn(IsNullable = true)]
         public string QrSceneStr { get; set; }
 
         /// <summary>
         /// 二维码Ticket
         /// </summary>
+        [SqlSugar.SugarColumn(IsNullable = true)]
         public string QrTicketId { get; set; }
 
         /// <summary>
         /// 二维码关联字段（推广员Id等）
         /// </summary>
+        [SqlSugar.SugarColumn(IsNullable = true)]
         public string QrStr { get; set; }
     }
 }
